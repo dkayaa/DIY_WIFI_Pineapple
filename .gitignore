@@ -2,6 +2,8 @@ configurator/tests
 configurator/resources/database.db
 configurator/__pycache__
 configurator/.bk 
+configurator/resources/database.db
 
 phishing_site/resources/credentials.txt
-configurator/resources/database.db
+phishing_site/__pycache__
+
