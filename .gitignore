@@ -2,5 +2,7 @@
 ./configurator/resources/database.db
 ./configurator/__pycache__
 ./configurator/.bk 
-./phishing_site.resources/credentials.txt
+./phishing_site/resources/credentials.txt
 
+phishing_site/resources/credentials.txt
+configurator/resources/database.db
