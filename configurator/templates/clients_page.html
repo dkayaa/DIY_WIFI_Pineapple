@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>{% block routing_list %} Connected Clients {% endblock %}</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Client MAC</th>
+					<th>isConnected</th>
+					<th>Last Modified</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for domain in domains %}
+				<tr>
+					<td>{{ domain['client_id'] }}</td>
+					<td>{{ domain['is_connected'] }}</td>
+					<td>{{ domain['modified'] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock %}

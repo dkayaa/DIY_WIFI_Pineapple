@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block routing_list %} Configuration {% endblock %}</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Value</th>
+					<th>Description</th>
+					<th>Last Modified</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for config in configs %}
+				<tr>
+					<td>{{ config['config_id'] }}</td>
+					<td>{{ config['config_value'] }}</td>
+					<td>{{ config['config_description'] }}</td>
+					<td>{{ config['modified'] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	
+	<!-- update existing entry -->
+	<h2>{% block routing_create %} Update Config Value {% endblock %}</h2>
+	<form method="post">
+		<div class="form-group">
+			<label for="config_id">Config ID</label>
+			<select id="config_id" name="config_id" class="form-select">
+				{% for config_id in config_ids %}
+					<option value="{{ config_id['config_id'] }}">{{ config_id['config_id'] }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="config_value">Value</label>
+			<textarea name="config_value" placeholder="Config Value"
+					class="form-control">{{ request.form['config_value'] }}</textarea>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Update</button>
+		</div>
+	</form>
+{% endblock %}

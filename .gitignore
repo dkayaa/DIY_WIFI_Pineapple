@@ -1,2 +1,3 @@
-./configurator
-./phishing_site
+./configurator/tests
+./configurator/resources/database.db
+./phishing_site.resources/credentials.txt
