@@ -3,7 +3,9 @@ configurator/resources/database.db
 configurator/__pycache__
 configurator/.bk 
 configurator/resources/database.db
+configurator/.DS_Store
 
 phishing_site/resources/credentials.txt
 phishing_site/__pycache__
+phishing_site/.DS_Store
 
