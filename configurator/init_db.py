@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect('database.db')
+connection = sqlite3.connect('resources/database.db')
 
 
 with open('schema.sql') as f:

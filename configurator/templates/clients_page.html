@@ -12,11 +12,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for domain in domains %}
+				{% for client in clients %}
 				<tr>
-					<td>{{ domain['client_id'] }}</td>
-					<td>{{ domain['is_connected'] }}</td>
-					<td>{{ domain['modified'] }}</td>
+					<td>{{ client['client_id'] }}</td>
+					<td>{{ client['is_connected'] }}</td>
+					<td>{{ client['modified'] }}</td>
 				</tr>
 				{% endfor %}
 			</tbody>
