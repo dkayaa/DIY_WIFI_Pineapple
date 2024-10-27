@@ -7,14 +7,20 @@ import subprocess
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'pineapple@2024'
 
-dnsmasq_path = '/etc/dnsmasq.conf'
-hostapd_path = '/etc/hostapd/hostapd.conf'
-dnsmasq_leases_path = '/var/www/configurator/tests/dnsmasq.leases'
+#dnsmasq_path = '/etc/dnsmasq.conf'
+#hostapd_path = '/etc/hostapd/hostapd.conf'
+#dnsmasq_leases_path = '/var/www/configurator/tests/dnsmasq.leases'
+#db_connection_string = '/var/www/configurator/resources/database.db'
+
+dnsmasq_path = './tests/dnsmasq2.conf'
+hostapd_path = './tests/hostapd2.conf'
+dnsmasq_leases_path = './tests/dnsmasq.leases'
+db_connection_string = './resources/database.db'
 
 os.system(f"sudo chmod 644 {dnsmasq_path}")
 
 def get_db_connection():
-	conn = sqlite3.connect('/var/www/configurator/resources/database.db')
+	conn = sqlite3.connect(db_connection_string)
 	conn.row_factory = sqlite3.Row
 	return conn
 
@@ -107,38 +113,32 @@ def traffic_page():
 
 @app.route('/configs_page', methods=('GET', 'POST'))
 def configs_page():
-
-    conn = get_db_connection()
-    configs = conn.execute('SELECT * FROM configs').fetchall()
-    config_ids = conn.execute('SELECT config_id FROM configs').fetchall()
-
-    conn.close()
-
     if request.method == 'POST':
+        if "update_table" in request.form:
+            config_value = request.form['config_value'].strip()
+            config_id = request.form['config_id'].strip()
 
-        config_value = request.form['config_value'].strip()
-        config_id = request.form['config_id'].strip()
-		
-        if not config_id:
-            flash('Config ID is required!')
-        else:
-            conn = get_db_connection()
-            conn.execute(
-				""" UPDATE configs  
-				SET config_value = ?, 
-				modified = CURRENT_TIMESTAMP 
-				WHERE  
-				config_id = ? """, (config_value, config_id))
-            conn.commit()
-            conn.close()
-            #update hostapd
-            conn = get_db_connection()
-            with open(hostapd_path, 'w') as file:
-                config_device_ssid = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.device_ssid\"").fetchall()[0]
-                config_device_hasPassword = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.device_hasPassword\"").fetchall()[0]
-                config_device_password = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.device_password\"").fetchall()[0]
-                if config_device_ssid['config_value']:
-                    file.write(f"""
+            if not config_id:
+                flash('Config ID is required!')
+            else:
+                conn = get_db_connection()
+                conn.execute(
+                    """ UPDATE configs  
+                    SET config_value = ?, 
+                    modified = CURRENT_TIMESTAMP 
+                    WHERE  
+                    config_id = ? """, (config_value, config_id))
+                conn.commit()
+                conn.close()
+        if "update_configs" in request.form:
+                #update hostapd
+                conn = get_db_connection()
+                with open(hostapd_path, 'w') as file:
+                    config_device_ssid = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.device_ssid\"").fetchall()[0]
+                    config_device_hasPassword = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.device_hasPassword\"").fetchall()[0]
+                    config_device_password = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.device_password\"").fetchall()[0]
+                    if config_device_ssid['config_value']:
+                        file.write(f"""
 # the interface used by the AP
 interface=wlan0
 driver=nl80211
@@ -159,29 +159,35 @@ ssid={config_device_ssid['config_value'].strip()}
 # 1=wpa, 2=wep, 3=both
 auth_algs=1
 ignore_broadcast_ssid=0""")
-					
-                if config_device_hasPassword['config_value'] == 'TRUE': 
-                    file.write(f"""
+                        
+                    if config_device_hasPassword['config_value'] == 'TRUE': 
+                        file.write(f"""
 # WPA2 only
 wpa=2
 wpa_passphrase={config_device_password['config_value'].strip()}
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP""")
-			#restart hostapd 
-            os.system(f"sudo systemctl restart hostapd")
-            config_parent_ssid = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.parent_ssid\"").fetchall()[0]
-            config_parent_hasPassword = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.parent_hasPassword\"").fetchall()[0]
-            config_parent_password = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.parent_password\"").fetchall()[0]			
-            if (config_parent_ssid['config_value']):
-                if (config_parent_hasPassword['config_value']) == 'TRUE' and config_parent_password['config_value']:
-                    #protected SSID
-                    os.system(f"nmcli device wifi connect \"{config_parent_ssid['config_value']}\" password \"{config_parent_password['config_value']}\"")
-                    print(f"nmcli device wifi connect \"{config_parent_ssid['config_value'].strip()}\" password \"{config_parent_password['config_value'].strip()}\"")
-                else:
-                    #open SSID
-                    os.system(f"nmcli device wifi connect \"{config_parent_ssid['config_value']}\"")
-                    print(f"nmcli device wifi connect \"{config_parent_ssid['config_value'].strip()}\"")
-            conn.close()	
-            return redirect(url_for('configs_page'))
+                #restart hostapd 
+                os.system(f"sudo systemctl restart hostapd")
+                config_parent_ssid = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.parent_ssid\"").fetchall()[0]
+                config_parent_hasPassword = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.parent_hasPassword\"").fetchall()[0]
+                config_parent_password = conn.execute("SELECT * FROM configs WHERE config_id = \"configs.parent_password\"").fetchall()[0]			
+                if (config_parent_ssid['config_value']):
+                    if (config_parent_hasPassword['config_value']) == 'TRUE' and config_parent_password['config_value']:
+                        #protected SSID
+                        os.system(f"nmcli device wifi connect \"{config_parent_ssid['config_value']}\" password \"{config_parent_password['config_value']}\"")
+                        print(f"nmcli device wifi connect \"{config_parent_ssid['config_value'].strip()}\" password \"{config_parent_password['config_value'].strip()}\"")
+                    else:
+                        #open SSID
+                        os.system(f"nmcli device wifi connect \"{config_parent_ssid['config_value']}\"")
+                        print(f"nmcli device wifi connect \"{config_parent_ssid['config_value'].strip()}\"")
+                conn.close()	
+                return redirect(url_for('configs_page'))
+
+    conn = get_db_connection()
+    configs = conn.execute('SELECT * FROM configs').fetchall()
+    config_ids = conn.execute('SELECT config_id FROM configs').fetchall()
+
+    conn.close()
     return render_template('configs_page.html', configs=configs, config_ids=config_ids)

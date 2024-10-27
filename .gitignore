@@ -11,3 +11,4 @@ phishing_site/resources/credentials.txt
 phishing_site/__pycache__
 phishing_site/.DS_Store
 
+configurator/tests/hostapd2.conf
