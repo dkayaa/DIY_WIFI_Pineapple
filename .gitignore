@@ -1,5 +1,5 @@
-configurator/tests
-configurator/tests/*
+configurator/tests/
+configurator/tests/*.txt
 
 configurator/resources/database.db
 configurator/__pycache__
