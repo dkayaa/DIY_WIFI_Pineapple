@@ -12,3 +12,6 @@ phishing_site/__pycache__
 phishing_site/.DS_Store
 
 configurator/tests/hostapd2.conf
+configurator/scrap.py
+configurator/resources/traffic
+configurator/resources/traffic.csv

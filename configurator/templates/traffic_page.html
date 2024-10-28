@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} This is the Traffic Page {% endblock %}</h1>
-{% endblock %}
+    <h1>{% block title %} Traffic Records {% endblock %}</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Request Type</th>
+                <th>Method/ Status Code</th>
+                <th>Host</th>
+                <th>Path</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                {% for cell in record %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
