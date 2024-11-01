@@ -12,11 +12,15 @@ echo "Setting Permissions"
 sudo chown www-data:www-data /etc/hostapd
 sudo chown www-data:www-data /etc/hostapd/hostapd.conf 
 sudo chown www-data:www-data /etc/dnsmasq.conf
+sudo chown www-data:www-data /var/www/configurator
+sudo chown www-data:www-data /var/www/configurator/resources
 sudo chown www-data:www-data /var/www/configurator/resources/database.db
 sudo chown www-data:www-data /var/www/configurator/resources/traffic
 sudo chown www-data:www-data /var/www/configurator/sniffer.py
 
 sudo chown www-data:www-data /var/www/phishing_site/resources/credentials.txt
+sudo chown www-data:www-data /var/www/phishing_site/resources
+sudo chown www-data:www-data /var/www/phishing_site
 
 sudo chmod 644 /etc
 sudo chmod 644 /etc/dnsmasq.conf
