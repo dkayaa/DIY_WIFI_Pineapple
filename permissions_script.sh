@@ -9,17 +9,21 @@ echo "replace directories - done"
 
 echo "Setting Permissions" 
 
-sudo chown root:www-data /etc/dnsmasq.conf
+sudo chown www-data:www-data /etc/hostapd
+sudo chown www-data:www-data /etc/hostapd/hostapd.conf 
+sudo chown www-data:www-data /etc/dnsmasq.conf
 sudo chown www-data:www-data /var/www/configurator/resources/database.db
+sudo chown www-data:www-data /var/www/configurator/sniffer.py
 
-sudo chmod 664 /etc
-sudo chmod 664 /etc/dnsmasq.conf
-sudo chmod 664 /etc/hostapd
-sudo chmod 664 /etc/hostapd/hostapd.conf
+sudo chmod 644 /etc
+sudo chmod 644 /etc/dnsmasq.conf
+sudo chmod 644 /etc/hostapd
+sudo chmod 644 /etc/hostapd/hostapd.conf
 
 sudo chmod 777 /var/www/configurator
 sudo chmod 777 /var/www/configurator/resources
 sudo chmod 777 /var/www/configurator/resources/database.db
+sudo chmod 777 /var/www/configurator/sniffer.py 
 
 echo "Setting Permissions - Done"
 
