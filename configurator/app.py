@@ -38,7 +38,9 @@ def process_packet(packet):
 
 def traffic_process():
     # Start sniffing on the desired interface (replace 'eth0' with your interface)
-    sniff(iface='en0', filter='tcp port 80', prn=process_packet, store=0)
+    #sniff(iface='en0', filter='tcp port 80', prn=process_packet, store=0)
+    sniff(iface='wlan1', filter='tcp port 80', prn=process_packet, store=0)
+
 
 
 thread = threading.Thread(target=traffic_process)
