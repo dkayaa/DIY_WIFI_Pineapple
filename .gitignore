@@ -3,18 +3,18 @@
 
 configurator/tests/
 configurator/tests/*.txt
-
 configurator/resources/database.db
 configurator/__pycache__
 configurator/.bk 
 configurator/resources/database.db
 configurator/.DS_Store
+configurator/tests/hostapd2.conf
+configurator/scrap.py
+configurator/resources/traffic.csv
+configurator/resources/.DS_Store
+
 
 phishing_site/__pycache__
 phishing_site/.DS_Store
+phishing_site/resources/credentials.txt
 
-configurator/tests/hostapd2.conf
-configurator/scrap.py
-configurator/resources/traffic
-configurator/resources/traffic.csv
-configurator/resources/.DS_Store
