@@ -22,10 +22,10 @@ sudo chown www-data:www-data /var/www/phishing_site/resources/credentials.txt
 sudo chown www-data:www-data /var/www/phishing_site/resources
 sudo chown www-data:www-data /var/www/phishing_site
 
-sudo chmod 644 /etc
-sudo chmod 644 /etc/dnsmasq.conf
-sudo chmod 644 /etc/hostapd
-sudo chmod 644 /etc/hostapd/hostapd.conf
+sudo chmod 777 /etc
+sudo chmod 777 /etc/dnsmasq.conf
+sudo chmod 777 /etc/hostapd
+sudo chmod 777 /etc/hostapd/hostapd.conf
 
 sudo chmod 777 /var/www/configurator
 sudo chmod 777 /var/www/configurator/resources
