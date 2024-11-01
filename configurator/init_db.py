@@ -36,7 +36,7 @@ cur.execute("""
 			('configs.parent_password', 'password', 'Password of the network this device connects too'),
 			('configs.device_ssid', 'TP-Link-LOL', 'SSID of the network this device broadcasts. Typically the same as the parent ssid for pineapples'),
 			('configs.device_hasPassword', 'TRUE', ''),
-			('configs.device_password', 'password', 'Password of the network device broadcasts');
+			('configs.device_password', 'password', 'Password of the network this device broadcasts');
 			""")
 
 connection.commit()
