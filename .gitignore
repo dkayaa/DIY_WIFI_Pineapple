@@ -12,6 +12,7 @@ configurator/tests/hostapd2.conf
 configurator/scrap.py
 configurator/resources/traffic.csv
 configurator/resources/.DS_Store
+configurator/resources/traffic
 
 
 phishing_site/__pycache__
