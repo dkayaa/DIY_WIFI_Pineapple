@@ -17,3 +17,4 @@ configurator/tests/hostapd2.conf
 configurator/scrap.py
 configurator/resources/traffic
 configurator/resources/traffic.csv
+configurator/resources/.DS_Store
