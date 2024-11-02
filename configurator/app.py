@@ -70,6 +70,7 @@ dhcp-range=192.168.29.2,192.168.29.30,255.255.255.0,24h
 #domain=wlan
 #prevent dnsmasq from using resolv.conf(which configures the systems DNS resolver)
 #no-resolv
+local-ttl=3600
 #DNS Mappings
 #configurator
 address=/mypineapple.config.local/192.168.5.1"""	
