@@ -18,6 +18,7 @@ sudo chown www-data:www-data /var/www/configurator/resources/database.db
 sudo chown www-data:www-data /var/www/configurator/resources/traffic
 sudo chown www-data:www-data /var/www/configurator/sniffer.py
 
+
 sudo chown www-data:www-data /var/www/phishing_site/resources/credentials.txt
 sudo chown www-data:www-data /var/www/phishing_site/resources
 sudo chown www-data:www-data /var/www/phishing_site
@@ -32,9 +33,9 @@ sudo chmod 777 /var/www/configurator/resources
 sudo chmod 777 /var/www/configurator/resources/database.db
 sudo chmod 777 /var/www/configurator/resources/traffic
 sudo chmod 777 /var/www/configurator/sniffer.py 
-
+sudo chmod 777 /var/www/configurator/my_configs.py
 sudo chmod 777 /var/www/phishing_site/resources/credentials.txt
-
+sudo chmod 777 /var/www/phishing_site/my_configs.py
 echo "Setting Permissions - Done"
 
 echo "restarting apache2"
