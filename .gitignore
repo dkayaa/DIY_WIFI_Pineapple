@@ -13,11 +13,12 @@ configurator/scrap.py
 configurator/resources/traffic.csv
 configurator/resources/.DS_Store
 configurator/resources/traffic
-
+configurator/my_configs.py
 
 phishing_site/__pycache__
 phishing_site/.DS_Store
 phishing_site/resources/credentials.txt
+phishing_site/my_configs.py
 
 configurator/resources/traffic
 configurator/resources/traffic
