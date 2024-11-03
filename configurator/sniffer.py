@@ -15,7 +15,7 @@ def process_packet(packet):
         if packet is not None:
             f.write(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + f"\t" + \
                     packet.sniffed_on + f"\t" + \
-                    packet.summary() + f"\t\n")
+                    packet.summary() + f"\n")
 
 
 def traffic_process():
