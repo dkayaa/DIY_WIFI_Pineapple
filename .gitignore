@@ -19,3 +19,5 @@ phishing_site/__pycache__
 phishing_site/.DS_Store
 phishing_site/resources/credentials.txt
 
+configurator/resources/traffic
+configurator/resources/traffic
