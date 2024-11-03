@@ -38,6 +38,6 @@ sudo chmod 777 /var/www/phishing_site/resources/credentials.txt
 echo "Setting Permissions - Done"
 
 echo "restarting apache2"
-
+sudo systemctl reload apache2
 sudo systemctl restart apache2
 echo "restarting apache2 - Done"
