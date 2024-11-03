@@ -1,8 +1,11 @@
 
 import sys
+import os 
+from my_configs import add_my_configs 
+add_my_configs() 
 
-dep_path =  '/home/deniz_kaya/pvenv/myenv/lib/python3.11/site-packages'
+dep_path =  os.environ["dep_path"]
 sys.path.insert(0, dep_path)
-sys.path.insert(0, '/var/www/phishing_site')
+sys.path.insert(0, os.environ["phishing_site_path"])
 
 from app import app as application 

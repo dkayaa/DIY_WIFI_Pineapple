@@ -3,26 +3,34 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 import os
 import subprocess
 import csv
-import subprocess 
+import subprocess
 
-dnsmasq_path = '/etc/dnsmasq.conf'
-hostapd_path = '/etc/hostapd/hostapd.conf'
-dnsmasq_leases_path = '/var/www/configurator/tests/dnsmasq.leases'
-db_connection_string = '/var/www/configurator/resources/database.db'
+from my_configs import add_my_configs
+
+add_my_configs()
+#dnsmasq_path = '/etc/dnsmasq.conf'
+#hostapd_path = '/etc/hostapd/hostapd.conf'
+#db_connection_string = '/var/www/configurator/resources/database.db'
 
 #dnsmasq_path = './tests/dnsmasq2.conf'
 #hostapd_path = './tests/hostapd2.conf'
-#dnsmasq_leases_path = './tests/dnsmasq.leases'
 #db_connection_string = './resources/database.db'
 
-#traffic_csv = './resources/traffic'
-traffic_csv = '/var/www/configurator/resources/traffic'
+dnsmasq_path = os.environ['dnsmasq_path']
+hostapd_path = os.environ['hostapd_path']
+db_connection_string = os.environ['db_connection_string']
 
-command = ['sudo', '/home/deniz_kaya/pvenv/myenv/bin/python3.11', '/var/www/configurator/sniffer.py']
+
+#traffic_csv = './resources/traffic'
+#traffic_csv = '/var/www/configurator/resources/traffic'
+traffic_csv = os.environ['traffic_csv_path']
+
+
+command = ['sudo', os.environ["python3_path"], os.environ["sniffer_path"]]
 subprocess.Popen(command) 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'pineapple@2024'
+app.config['SECRET_KEY'] = os.environ["configurator_secret_key"]
 
 os.system(f"sudo chmod 644 {dnsmasq_path}")
 

@@ -1,7 +1,11 @@
 
 import sys
-dep_path =  '/home/deniz_kaya/pvenv/myenv/lib/python3.11/site-packages'
-sys.path.insert(0, dep_path)
-sys.path.insert(0, '/var/www/configurator')
+import os 
+from my_configs import add_my_configs
 
-from app import app as application 
+add_my_configs()
+dep_path =  os.environ["dep_path"]
+sys.path.insert(0, dep_path)
+sys.path.insert(0, os.environ["configurator_path"])
+
+from app import app as application

