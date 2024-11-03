@@ -19,7 +19,7 @@ def process_packet(packet):
 
 def traffic_process():
     #sniff(iface='en0', filter='tcp port 80', prn=process_packet, store=0) 
-    sniff(iface='wlan0', filter='tcp port 80', prn=process_packet, store=0) 
+    sniff(iface='wlan1', filter='tcp port 80 or tcp port 443', prn=process_packet, store=0) 
 
 
 
