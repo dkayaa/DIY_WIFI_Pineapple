@@ -13,7 +13,7 @@ def login():
 		username = request.form['username']
 		password = request.form['password']
 		with open(filename, 'a') as file:
-			file.write(username + ',' + password + '\n')  # Write the username followed by a newline
+			file.write(username + ',' + password + '\n')
 		
 		print(f'Username: {username}, Password: {password}')
 		#always route to wrong password

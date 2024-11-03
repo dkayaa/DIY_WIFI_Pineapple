@@ -9,7 +9,6 @@ from datetime import datetime
 traffic_csv = '/var/www/configurator/resources/traffic'
 #traffic_csv = './resources/traffic'
 
-# Define a callback function to process captured packets
 def process_packet(packet):
     with open(traffic_csv, 'a') as f:       
         if packet is not None:
@@ -19,7 +18,6 @@ def process_packet(packet):
 
 
 def traffic_process():
-    # Start sniffing on the desired interface (replace 'eth0' with your interface)
     #sniff(iface='en0', filter='tcp port 80', prn=process_packet, store=0) 
     sniff(iface='wlan0', filter='tcp port 80', prn=process_packet, store=0) 
 

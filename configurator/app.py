@@ -98,16 +98,13 @@ def clients_page():
     #iw dev wlan0 station dump | grep ^.*Station.*$
     conn = get_db_connection()
     try:
-        # Execute the command
         result = subprocess.run(['iw', 'dev', 'wlan0', 'station', 'dump'], stdout=subprocess.PIPE, text=True)
         lines = result.stdout.split('\n')
         mac_addresses = [line.split()[1] for line in lines if line.startswith('Station')]
-        #conn.execute("UPDATE clients SET is_connected = \"FALSE\"")
         conn.execute('DELETE FROM clients')
         print(mac_addresses)
         for mac in mac_addresses:
             conn.execute("INSERT OR IGNORE INTO clients (client_id, is_connected) VALUES (?, ?)", (mac, 'TRUE'))
-            #conn.execute("UPDATE clients SET is_connected = \"TRUE\", modified = CURRENT_TIMESTAMP WHERE client_id = ?", (mac))
         conn.commit()
     except Exception as e:
         print(f"Exception Raised: {e}")
@@ -120,11 +117,10 @@ def traffic_page():
 
     records = []
 
-    # Open the CSV file and read its contents
     with open(traffic_csv, encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile, delimiter='\t')
         for row in reader:
-            records.append(row)  # Append each row to records list
+            records.append(row)
 
     return render_template('traffic_page.html', records=records)
 
