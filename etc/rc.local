@@ -1,0 +1,30 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+sudo chmod 777 /etc/
+sudo chmod 777 /etc/dnsmasq.conf
+sudo chmod 777 /etc/hostapd/
+sudo chmod 777 /etc/hostapd/hostapd.conf 
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+	sudo ip addr add 192.168.4.1/24 dev wlan1  # IP Address for Website A
+	sudo ip addr add 192.168.4.2/24 dev wlan1  # IP Address for Website B
+	sudo ip addr add 192.168.4.3/24 dev wlan1  # IP Address for Website C
+	sudo ip addr add 192.168.4.4/24 dev wlan1  # IP Address for Website D
+	sudo ip addr add 192.168.4.5/24 dev wlan1  # IP Address for Website E
+	sudo ip addr add 192.168.5.1/24 dev wlan1  # IP Address for Config Website
+exit 0
