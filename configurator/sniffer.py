@@ -9,8 +9,6 @@ from datetime import datetime
 from my_configs import add_my_configs
 
 add_my_configs()
-#traffic_csv = '/var/www/configurator/resources/traffic'
-#traffic_csv = './resources/traffic'
 traffic_csv = os.environ["traffic_csv_path"]
 
 def process_packet(packet):
