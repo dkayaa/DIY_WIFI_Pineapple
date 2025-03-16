@@ -1,5 +1,4 @@
-# COMP6841_SAP
-Something Awesome Project for COMP6841
+# DIY WIFI Pineapple 
 
-This is my private repo for my COMP6841
-public one is called COMP6841_SomethingAwesomeProject 
+A WIFI pineapple is a network security tool that cyber security experts, pen-testers and malicious attackers use. It is a tool that is commonly used to detect company network vulnerabilities. What makes it so powerful is that it enables the controller to record, analyse and modify the internet traffic which travels through it. Naturally, this makes it a very popular tool amongst cyber security criminals, as it enables them exploit client devices through attacks such as man in the middle attacks, SSID Spoofing and DNS Spoofing. The goal of this repo is to explore the capabilities of a WIFI Pineapple through development using free open-source software. The intention of this repo is not to motivate malicious attackers, but rather to bring into the limelight the ever-present danger of WIFI pineapples and the seemingly invisible yet significant risks when doing something as innocent as accessing an open public Wi-Fi network.
+
