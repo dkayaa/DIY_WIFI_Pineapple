@@ -12,7 +12,7 @@ A WIFI pineapple is a network security tool that cyber security experts, pen-tes
 | TP-Link Wireless USB WIFI Adapter | 1        |
 
 ### OS
-Theoperatingsystemusedwas: `Debian GNU/Linux 12`
+The operating system used was: `Debian GNU/Linux 12`
 The operating system was installed on the Raspberry Pi using the raspberry pi imaging software.
 
 ### Network Interfaces 
