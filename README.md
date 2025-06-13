@@ -12,7 +12,7 @@ A WIFI pineapple is a network security tool that cyber security experts, pen-tes
 | TP-Link Wireless USB WIFI Adapter | 1        |
 
 ### OS
-Theoperatingsystemusedwas: `Debian GNU/Linux 12`
+The operating system used was: `Debian GNU/Linux 12`
 The operating system was installed on the Raspberry Pi using the raspberry pi imaging software.
 
 ### Network Interfaces 
@@ -89,9 +89,9 @@ SSID Spoofing was tested with the following method accross a variety of devices.
 ##### Results
 |     Device                  |     Result   and Observations (open AP)    |     Results   and Observations (closed AP)    |
 |-----------------------------|--------------------------------------------|-----------------------------------------------|
-|     Apple Macbook Pro M1    |     spoofed                                |     spoofed                                   |
-|     Apple iPhone 11         |     spoofed                                |     spoofed                                   |
-|     Dell Latitude 5530      |     spoofed                                |     spoofed                                   |
+|     Apple Macbook Pro M1    |     pwnd!                                |     pwnd!                                   |
+|     Apple iPhone 11         |     pwnd!                                |     pwnd!                                   |
+|     Dell Latitude 5530      |     pwnd!                                |     pwnd!                                   |
 
 #### DNS Spoofing
 The experiment tested the effectiveness of DNS spoofing across several websites. The target websites were categorised as, http only websites and http websites upgradeable to https (301 redirect) and those employing HSTS (http strict transport security). The browser used to conduct this experiment was Brave. Brave also has inbuilt a preloaded set of HSTS headers for high-profile websites. The websites, their classes and their descriptions are given in the table below:
